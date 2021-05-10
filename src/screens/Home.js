@@ -37,35 +37,6 @@ const styles = StyleSheet.create({
     },
 })
 
-function Item(props){
-    return(
-        <View style={styles.contenedor}>
-            <View style={styles.contenedorImagen}>
-                <Image style={styles.imagen} source={{uri: props.image}}/>
-            </View>
-
-            <View style={styles.texto}>
-                <Text style={{ flex: 1, fontSize:25 }}>{props.titulo}</Text>
-                <Text numberOfLines={4} style={{ textAlign: 'left' }}>{props.resumen}</Text>
-            </View>
-            <View style={styles.contenedorButton}>
-                <Button color="#5320C0"
-                    title=">"
-                    onPress={ () => props.navigation.navigate('Detalles', {
-                        titulo: props.titulo,
-                        imagen: props.image,
-                        texto: props.resumen,
-                        text_ingr: props.ingredientes,
-                        text_ingr2: props.ingredientes2,
-                        text_ingr3: props.ingredientes3,
-                    })}
-                />
-                
-            </View>
-        </View>
-    )
-}
-
 function Home({ navigation }) {
     const [lista, setLista] = useState([])
 
@@ -80,6 +51,35 @@ function Home({ navigation }) {
             },
         )}
     )
+
+    function Item(props){
+        return(
+            <View style={styles.contenedor}>
+                <View style={styles.contenedorImagen}>
+                    <Image style={styles.imagen} source={{uri: props.image}}/>
+                </View>
+    
+                <View style={styles.texto}>
+                    <Text style={{ flex: 1, fontSize:25 }}>{props.titulo}</Text>
+                    <Text numberOfLines={4} style={{ textAlign: 'left' }}>{props.resumen}</Text>
+                </View>
+                <View style={styles.contenedorButton}>
+                    <Button color="#5320C0"
+                        title=">"
+                        onPress={ () => props.navigation.navigate('Detalles', {
+                            titulo: props.titulo,
+                            imagen: props.image,
+                            texto: props.resumen,
+                            text_ingr: props.ingredientes,
+                            text_ingr2: props.ingredientes2,
+                            text_ingr3: props.ingredientes3,
+                        })}
+                    />
+                    
+                </View>
+            </View>
+        )
+    }    
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: 30}}>

@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     contenedor: {
         flex: 1, 
         alignItems: 'center', 
-        margin:20,
+        margin:10,
         marginTop: 3,
         marginBottom: 3,
         padding: 10,
@@ -15,6 +15,10 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.58,
         shadowRadius: 16.00,
         elevation: 10
+    },
+    contInf:{
+        width: '100%',
+        padding: 5,
     },
     imagen: {
         width: '80%', 
@@ -28,14 +32,10 @@ const styles = StyleSheet.create({
     textoTi:{
         textAlign: 'center',
         width: '80%',
-        fontSize: 20,
+        fontSize: 25,
         textDecorationLine: 'underline',
-    },
-    textoIng:{
-        textAlign: 'center',
-        width: '80%',
-        fontSize: 20,
-        textDecorationLine: 'underline',
+        fontWeight:'bold',
+        color:'#5320C0'
     }
 })
 
@@ -44,21 +44,27 @@ function vistaDetalles({ route, navigation }) {
 
     return (
       <View style={{ width:'100%', height:'100%', marginTop: 30 }}>
-         <View style={{ width:'30%'}}> 
-        <Button color="#5320C0"
+         <View style={{ width:'100%'}}> 
+        <Button color="#5320C0" 
                     title="Lista"
                     onPress={ () => navigation.navigate('Lista')}
                 />
                 </View>
         <View style={styles.contenedor}>        
-        <Text style={{ fontSize:30, marginBottom: 15 }}>{titulo}</Text>
+        <Text style={{ fontSize:30, marginBottom: 15, fontWeight:'bold' }}>{titulo}</Text>
         <Image style={styles.imagen} source={{uri: imagen}}></Image>
+        <Text style={{ backgroundColor:'#5320C0', width:'100%', height:4, marginTop:10}}></Text>
         <Text style={styles.textoTi}>Preparacion</Text>
-        <Text style={styles.texto}>{texto}</Text>
-        <Text style={styles.textoIng}>Ingredientes</Text>
-        <Text style={styles.texto}>{text_ingr}</Text>
-        <Text style={styles.texto}>{text_ingr2}</Text>
-        <Text style={styles.texto}>{text_ingr3}</Text>
+        <View style={styles.contInf}>
+            <Text style={styles.texto}>{texto}</Text>
+        </View>
+        <Text style={{ backgroundColor:'#5320C0', width:'100%', height:4, marginTop:10}}></Text>
+        <Text style={styles.textoTi}>Ingredientes</Text>
+        <View style={styles.contInf}>
+            <Text style={styles.texto}>-. {text_ingr}</Text>
+            <Text style={styles.texto}>-. {text_ingr2}</Text>
+            <Text style={styles.texto}>-. {text_ingr3}</Text>
+        </View>
         </View>
       </View>
     );
